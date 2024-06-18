@@ -1,0 +1,79 @@
+
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">
+        Dropdown
+      </button>
+  <div class="dropdown-menu" aria-labelledby="triggerId">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item disabled" href="#">Disabled action</a>
+    <h6 class="dropdown-header">Section header</h6>
+    <a class="dropdown-item" href="#">Action</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">After divider action</a>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-6 m-auto mt-5">
+  <div class="card m-auto">
+    <div class="card-header">
+      Register
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="submit()" [formGroup]="regiserationFromGroup">
+        <div class="form-group col-12 mb-3"  >
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control requried" formControlName="userName" >
+            <span *ngIf="!getControl('userName')?.valid && getControl('userName')?.touched">
+            <span *ngIf="getControl('userName')?.hasError('required')" class="error">Please provide name</span>
+            <span *ngIf="getControl('userName')?.errors?.['invalidName']" class="error">Please provide valid name</span>
+           </span>
+          </div>
+
+        <div class="form-group col-12 mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control requried" formControlName="email">
+          <span *ngIf="!getControl('email')?.valid && getControl('email')?.touched">
+            <span *ngIf="getControl('email')?.hasError('required')" class="error">Please provide email</span>
+            <span *ngIf="getControl('email')?.hasError('email')" class="error">Please provide valid email</span>
+
+          </span>
+        </div>
+
+        <div class="form-group col-12 mb-3">
+          <label for="passwrod" class="form-label">Password</label>
+          <input type="password" class="form-control requried" formControlName="password">
+          <span *ngIf="!getControl('password')?.valid && getControl('password')?.touched">
+            <span *ngIf="getControl('password')?.hasError('required')" class="error">Please provide password</span>
+            <span *ngIf="getControl('password')?.errors?.['invalidPassword']" class="error">Please provide valid  Password  &&  <br> password should have at least 6 characters</span>
+          </span>
+        </div>
+
+        <div class="form-group col-12 mb-3">
+          <label for="cpassword" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control requried" formControlName="confirmPassword" >
+          <span *ngIf="!getControl('confirmPassword')?.valid && getControl('confirmPassword')?.touched">
+            <span *ngIf="getControl('confirmPassword')?.hasError('required')" class="error">Please provide confirm password</span>
+            <span *ngIf="getControl('confirmPassword')?.hasError('matching')" class="error">Password not matched</span>
+
+          </span>
+        </div>
+
+        <div class="form-group col-12 mb-3">
+          <label for="mobile" class="form-label">Mobile</label>
+          <input type="tel" class="form-control" formControlName="mobile">
+        </div>
+
+        <div class="form-group col-12">
+          <button [disabled]="!regiserationFromGroup.valid" type="submit" class="btn btn-primary me-2">Save</button>
+          <button type="reset" class="btn btn-secondary ">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  </div>
+</div>
+

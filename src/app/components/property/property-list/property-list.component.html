@@ -1,0 +1,28 @@
+
+<div class="mb-3">
+  <!-- <label style="font-weight: 500;">Filter City</label> -->
+  <input style="border-radius: 30px; border: blue solid 1px;" class="p-2" type="text" name="" id="" placeholder="Enter City Name For Filter"  [(ngModel)]="City">
+  <button class="btn btn-outline-primary mx-2" (click)="onSearch()">Search</button>
+  <button class="btn btn btn-outline-danger me-2" (click)="onClearSearch()">Clear</button>
+
+<!--For Sort-->
+  <label class="label-form" > Sort By &nbsp;</label>
+  <select style="width: 100px;" [(ngModel)]="sortByProp">
+    <option value="Price" selected>Price</option>
+    <option value="City">City</option>
+  </select>
+  <button class="btn btn-dark ms-1 font-weight-bold" (click)="onSortDirection()">
+    <fa-icon *ngIf="sortDirection=='desc'" [icon]="faSortAlphaDesc"></fa-icon>
+    <fa-icon *ngIf="sortDirection=='asc'" [icon]="faSortAlphaAsc"></fa-icon>
+  </button>
+</div>
+
+
+<div class="row" >
+  <div *ngFor="let property of properties | filterProp:searchCity:'City'|sort:[sortByProp,sortDirection]" class="col-sm-4 mb-3 ">
+
+    <app-property-card [property]="property"></app-property-card>
+</div>
+</div>
+
+

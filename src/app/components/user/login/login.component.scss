@@ -1,0 +1,14 @@
+// @import 'ngx-toastr/toastr';
+// @import 'ngx-toastr/toastr-bs5-alert';
+
+.ng-valid.requried:not(form) {
+  border-left: 8px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 8px solid #a94442; /* red */
+}
+.error{
+  color: #a94442;
+}
+
